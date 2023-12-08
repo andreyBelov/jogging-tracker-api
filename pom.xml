@@ -15,6 +15,8 @@
 	<description>Test task for bergmann-infotech</description>
 	<properties>
 		<java.version>17</java.version>
+		<liquibase.version>4.25.0</liquibase.version>
+		<liquibase-hibernate6.version>4.25.0</liquibase-hibernate6.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -70,6 +72,32 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>${liquibase.version}</version>
+				<configuration>
+					<changeLogFile>classpath:/db/changelog/db.changelog-master.yaml</changeLogFile>
+					<url>${SPRING_DATASOURCE_URL}</url>
+					<username>${SPRING_DATASOURCE_USERNAME}</username>
+					<password>${SPRING_DATASOURCE_PASSWORD}</password>
+					<driver>org.postgresql.Driver</driver>
+					<referenceUrl>hibernate:spring:de.bergmanninfotech.joggingtrackerapi?dialect=org.hibernate.dialect.PostgreSQLDialect&amp;hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
+					<diffChangeLogFile>src/main/resources/liquibase-diff-changeLog.sql</diffChangeLogFile>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.liquibase.ext</groupId>
+						<artifactId>liquibase-hibernate6</artifactId>
+						<version>${liquibase-hibernate6.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-starter-data-jpa</artifactId>
+						<version>3.2.0</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
