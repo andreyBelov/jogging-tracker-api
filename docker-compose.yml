@@ -10,3 +10,12 @@ services:
       POSTGRES_USER: app
       POSTGRES_PASSWORD: password
       POSTGRES_DB: db
+  jogging-tracker-api:
+    image: 'docker.io/library/jogging-tracker-api:0.0.1-SNAPSHOT'
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/db
+      SPRING_DATASOURCE_USERNAME: app
+      SPRING_DATASOURCE_PASSWORD: password
+    depends_on: [ postgres ]

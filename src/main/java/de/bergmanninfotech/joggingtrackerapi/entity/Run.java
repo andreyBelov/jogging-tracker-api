@@ -17,6 +17,7 @@ import java.time.Instant;
 @Entity
 @Table(indexes = {
         @Index(name = "run_user_id_i", columnList = "user_id"),
+        @Index(name = "run_user_id_startDateTime_i", columnList = "user_id,startDateTime")
 })
 @Getter
 @Setter

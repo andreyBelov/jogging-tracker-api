@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: db/changelog/1_user_run.sql
+  - include:
+      file: db/changelog/2_added_index_on_run_table.sql
