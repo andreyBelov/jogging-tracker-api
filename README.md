@@ -1,34 +1,44 @@
 # How to build and run
 
-* Check your JAVA_HOME variable
-* echo %JAVA_HOME%
-* echo $JAVA_HOME
-* 
-* If not set open command prompt as Admin 
-* setx /m JAVA_HOME "C:\Users\belov\.jdks\temurin-17.0.6"
-* export JAVA_HOME=/usr/lib/jvm/java-17
-* 
-* Make sure you are in the root of repo and run build plugin 
-* .\mvnw spring-boot:build-image
-* ./mvnw spring-boot:build-image
-* At the end of image building you will see in the console
-* "Successfully built image 'docker.io/library/jogging-tracker-api:0.0.1-SNAPSHOT'"
-* "BUILD SUCCESS"
-* 
-* Run postgres and app containers
-* docker-compose up -d
-* 
-* check containers started succesfully
-* docker ps -a
-*
-* To stop containers
-* docker-compose down -v
+Check your JAVA_HOME variable
+```bash
+echo %JAVA_HOME%
+echo $JAVA_HOME
+```
 
-# Getting Started
+If not set open command prompt as Admin:
+```bash
+setx /m JAVA_HOME "C:\Users\belov\.jdks\temurin-17.0.6"
+export JAVA_HOME=/usr/lib/jvm/java-17
+```
 
-* Open swagger ui
-* http://localhost:8080/swagger-ui/index.html
-* At the first launch database will be prepopulated with one User record and one finished Run record for this user
+Make sure you are in the root of repo and run build plugin
+```bash
+.\mvnw spring-boot:build-image
+./mvnw spring-boot:build-image
+```
+
+At the end of image building you will see in the console:
+
+>"Successfully built image 'docker.io/library/jogging-tracker-api:0.0.1-SNAPSHOT'"
+> 
+>"BUILD SUCCESS"
+
+Run postgres and app containers:
+```bash
+docker-compose up -d
+```
+Check containers started successfully:
+```bash
+docker ps -a
+```
+To stop containers:
+```bash
+docker-compose down -v
+```
+Open swagger ui http://localhost:8080/swagger-ui/index.html
+
+At the first launch database will be prepopulated with one User record and one finished Run record for this user
 
 # Tech features
 - Open api specification: `http://localhost:8080/v3/api-docs` and swagger UI `http://localhost:8080/swagger-ui/index.html`
@@ -38,7 +48,7 @@
 - For user statistics: streaming resultset of records one by one in order to avoid memory consumption leading to OutOfMemoryError
 - Flexible specification-based approach for building dynamic sql queries
 - Mapstruct-based mapping avoids Entity <-> DTO mapping boilerplate
-# What can be done better, but there was not enough time:
+# What can be done better
 1) more tests
 2) additional annotations to make OpenApiSpec clearer
 
