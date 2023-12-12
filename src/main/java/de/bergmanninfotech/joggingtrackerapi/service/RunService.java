@@ -83,14 +83,6 @@ public class RunService {
         return runMapper.mapToFinishResponse(updatedRun);
     }
 
-    private Long calculateDistance(Run run) {
-        return calculateDistanceInMeters(
-                run.getStartLatitude(),
-                run.getStartLongitude(),
-                run.getFinishLatitude(),
-                run.getFinishLongitude());
-    }
-
     @Transactional(readOnly = true)
     public Page<RunResponse> findAll(Long userId, Instant from, Instant to, Pageable pageable) {
         Specification<Run> filter = Specification.where(userIdEquals(userId))

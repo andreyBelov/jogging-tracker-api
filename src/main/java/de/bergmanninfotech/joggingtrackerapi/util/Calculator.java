@@ -1,7 +1,5 @@
 package de.bergmanninfotech.joggingtrackerapi.util;
 
-import de.bergmanninfotech.joggingtrackerapi.entity.Run;
-
 import java.time.Duration;
 import java.time.Instant;
 
